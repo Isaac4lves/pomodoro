@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Pomodoro</title>
+  </head>
+
+  </style>
+
+  <body>
+
+    <Div class="login">
+      <!-- outro dia -->
+      </div>
+   
+
+
+  </Div>
+
+  </form>
+
+
+<div class="conteiner">
+
+  <div class="ciclos">
+    <p> <span id="ciclos">0 </span> Ciclo(s)</p>
+    </div>
+
+    <div class="timer">
+    <p id="tempo-trabalho">25:00</p>
+    <p id="tempo-pausa" style="display:none">05:00</p>
+  </div>
+
+    <div class="botoes">
+    <button onclick="iniciarPomodoro()">Iniciar</button>
+    <button onclick="pararPomodoro()">Parar</button>
+  </div>
+
+</div>
+
+
+    <script>
+      let tempoTrabalho = 25 * 60;
+      let tempoPausa = 5 * 60;
+      let intervalo;
+      let ciclos = 0;
+      let trabalhando = true;
+
+      function iniciarPomodoro() {
+        intervalo = setInterval(() => {
+          if (trabalhando) {
+            tempoTrabalho--;
+            document.getElementById("tempo-trabalho").innerHTML = `${formatarTempo(tempoTrabalho)}`;
+            if (tempoTrabalho === 0) {
+              trabalhando = false;
+              tempoPausa = 5 * 60;
+              document.getElementById("tempo-pausa").style.display = "block";
+              document.getElementById("tempo-trabalho").style.display = "none";
+              ciclos++;
+              document.getElementById("ciclos").innerHTML = ciclos;
+            }
+          } else {
+            tempoPausa--;
+            document.getElementById("tempo-pausa").innerHTML = `${formatarTempo(tempoPausa)}`;
+            if (tempoPausa === 0) {
+              trabalhando = true;
+              tempoTrabalho = 25 * 60;
+              document.getElementById("tempo-trabalho").style.display = "block";
+              document.getElementById("tempo-pausa").style.display = "none";
+            }
+          }
+        }, 1000);
+      }
+
+      function pararPomodoro() {
+        clearInterval(intervalo);
+        tempoTrabalho = 25 * 60;
+        tempoPausa = 5 * 60;
+        ciclos = 0;
+        trabalhando = true;
+        document.getElementById("tempo-trabalho").innerHTML = `25:00`;
+        document.getElementById("tempo-pausa").innerHTML = `05:00`;
+        document.getElementById("ciclos").innerHTML = ciclos;
+        document.getElementById("tempo-trabalho").style.display = "block";
+        document.getElementById("tempo-pausa").style.display = "none";
+      }
+
+      function formatarTempo(segundos) {
+  let minutos = Math.floor(segundos / 60);
+  let segundosRestantes = segundos % 60;
+  if (segundosRestantes < 10) {
+    segundosRestantes = `0${segundosRestantes}`;
+  }
+  // Adicione esta parte para os minutos
+  if (minutos < 10) {
+    minutos = `0${minutos}`;
+  }
+  return `${minutos}:${segundosRestantes}`;
+}
+
+//pop up sign up
+
+    </script>
+  </body>
+</html>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
+
+.ciclos{
+  position: absolute;
+  align-items: center;
+  top:300px;
+  left:38%;
+  font-size: 30px;
+}
+
+
+.timer{
+  font-family: 'Sometype Mono', monospace;
+
+  position: absolute;
+  align-items: center;
+  top:30px;
+  left:32%;
+  font-size:150px
+}
+
+.botoes{
+  position: absolute;
+  align-items: center;
+  top:326px;
+  left:49%;
+  font-size: 30px;
+}
+
+.login{
+  position: absolute;
+  left:91%;
+  top:40px;
+
+}
+
+
+
+</style>
