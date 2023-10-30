@@ -9,21 +9,25 @@
 
   <body>
 
-    <Div class="login">
-      <!-- outro dia -->
-      </div>
-   
-
-
-  </Div>
-
-  </form>
-
+<!-- tentativa de notes -->
 
 <div class="conteiner">
+  <div class="task">
+   
+    <div class="tarefa">
+      <button id="p_notes" onclick="maisnotas()">Mais notas</button>
+      
+    </div>
+
+  
+  </div>
+    
+  <!-- /tentativa de notes -->
+ 
+
 
   <div class="ciclos">
-    <p> <span id="ciclos">0 </span> Ciclo(s)</p>
+    <p> Ciclos: <span id="ciclos">0 </span></p>
     </div>
 
     <div class="timer">
@@ -32,8 +36,12 @@
   </div>
 
     <div class="botoes">
+      <div class="iniciar">
     <button onclick="iniciarPomodoro()">Iniciar</button>
+  </div>
+  <div class="parar">
     <button onclick="pararPomodoro()">Parar</button>
+  </div>
   </div>
 
 </div>
@@ -98,21 +106,40 @@
   return `${minutos}:${segundosRestantes}`;
 }
 
-//pop up sign up
+//notas
+
+
+function maisnotas(){
+  console.log("deixa pra depois, mo trampo slckkkk");
+}
+
+
+
+
 
     </script>
   </body>
 </html>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
 
+.task{
+  position:absolute;
+  top:95%;
+  left:90%;
+}
+
 .ciclos{
+  font-family: 'Playpen Sans', cursive;
+
   position: absolute;
   align-items: center;
-  top:300px;
-  left:38%;
-  font-size: 30px;
+  top:302px;
+  left:43.9%;
+  font-size: 26px;
+
 }
 
 
@@ -126,12 +153,21 @@
   font-size:150px
 }
 
-.botoes{
+ .parar {
+  
   position: absolute;
-  align-items: center;
-  top:326px;
-  left:49%;
+  left:65%;
+  top: 44%;
   font-size: 30px;
+
+}
+
+ .iniciar {
+  position: absolute;
+  left:64.9%;
+  top:40%;
+  font-size: 30px;
+
 }
 
 .login{
