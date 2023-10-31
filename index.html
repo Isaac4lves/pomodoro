@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE htmlclass<html>
   <head>
 
     <title>Pomodoro</title>
@@ -12,12 +11,16 @@
 <!-- tentativa de notes -->
 
 <div class="conteiner">
-  <div class="task">
-   
-    <div class="tarefa">
-      <button id="p_notes" onclick="maisnotas()">Mais notas</button>
-      
-    </div>
+  <div class="annotation-container">
+    <label class="text-note" for="textarea">Bloco de Notas</label><br><br><br>
+    <textarea 
+    placeholder="Como preparar um bolo de fubá?
+    - Um fusca rebaixado 
+    - Uranio
+    - Metano defumado
+  precauções: ALTO TEOR DE MONOXIDO DE CARBONO."></textarea>
+</div>
+
 
   
   </div>
@@ -29,7 +32,7 @@
   <div class="ciclos">
     <p> Ciclos: <span id="ciclos">0 </span></p>
     </div>
-
+    <p id="teste"></p>
     <div class="timer">
     <p id="tempo-trabalho">25:00</p>
     <p id="tempo-pausa" style="display:none">05:00</p>
@@ -108,15 +111,24 @@
 
 //notas
 
-
-function maisnotas(){
-  console.log("deixa pra depois, mo trampo slckkkk");
-}
-
-
-
-
-
+function saveAnnotations() {
+            const annotations = document.querySelector('.annotation-container textarea').value;
+            localStorage.setItem('annotations', annotations);
+        }
+        
+        // Carregar as anotações do localStorage
+        function loadAnnotations() {
+            const annotations = localStorage.getItem('annotations');
+            if (annotations) {
+                document.querySelector('.annotation-container textarea').value = annotations;
+            }
+        }
+        
+        // Chamar a função de carregar as anotações ao carregar a página
+        window.addEventListener('load', loadAnnotations);
+        
+        // Chamar a função de salvar as anotações ao sair da página
+        window.addEventListener('beforeunload', saveAnnotations);
     </script>
   </body>
 </html>
@@ -125,11 +137,30 @@ function maisnotas(){
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
 
-.task{
+.text-note{
   position:absolute;
-  top:95%;
-  left:90%;
+  align-items: center;
 }
+.annotation-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 200px;
+            height: 200px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            padding: 14px;
+        }
+        
+        .annotation-container textarea {
+          position:fixed;
+          top: 411px;
+          width: 14.5%;
+            height: 27%;
+            resize: none;
+        }
 
 .ciclos{
   font-family: 'Playpen Sans', cursive;
