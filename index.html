@@ -4,14 +4,16 @@
     <title>Pomodoro</title>
   </head>
 
-  </style>
+  
 
   <body>
 
 <!-- tentativa de notes -->
 
+<button class="hidebtn" id="hidebtn"><b></b></button>
 <div class="conteiner">
   <div class="annotation-container">
+    
     <label class="text-note" for="textarea">Bloco de Notas</label><br><br><br>
     <textarea 
     placeholder="Como preparar um bolo de fubá?
@@ -110,6 +112,24 @@
 }
 
 //notas
+let textclose="close";
+let textopen="open";
+document.getElementById("hidebtn").innerHTML=textclose;
+const hideshow=document.getElementById("hidebtn");
+hideshow.addEventListener("click", ()=>{
+console.log("funcionou");
+var textarea=document.querySelector('.conteiner');
+var isVisible = textarea.style.display != "none";
+if(isVisible){
+  document.getElementById("hidebtn").innerHTML=textopen;
+}
+  // altera a propriedade display para none ou block
+  textarea.style.display = isVisible ? "none" : "block";
+  if(!isVisible){
+  document.getElementById("hidebtn").innerHTML=textclose;
+}
+
+});
 
 function saveAnnotations() {
             const annotations = document.querySelector('.annotation-container textarea').value;
@@ -137,6 +157,15 @@ function saveAnnotations() {
 @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
 
+.hidebtn{
+  position: absolute;
+  right:2.5%;
+  top:59.5%;
+  z-index:4;
+  border: none;
+  background-color: #e4dcdc;
+
+}
 .text-note{
   position:absolute;
   align-items: center;
