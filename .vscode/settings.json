@@ -1,5 +1,8 @@
 {
     "[html]": {
         "editor.defaultFormatter": "Jota0222.multi-formatter"
+    },
+    "[python]": {
+        "editor.defaultFormatter": null
     }
 }

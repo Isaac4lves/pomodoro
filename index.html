@@ -1,242 +1,303 @@
-<!DOCTYPE htmlclass<html>
-  <head>
+<html lang="en">
 
-    <title>Pomodoro</title>
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POMOFORO</title>
+</head>
 
-  
 
-  <body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
 
-<!-- tentativa de notes -->
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital@1&display=swap');
 
-<button class="hidebtn" id="hidebtn"><b></b></button>
-<div class="conteiner">
-  <div class="annotation-container">
+    body {
+        background-color: #4c5366;
+    }
+
+    .text-note {
+        position: absolute;
+        align-items: center;
+    }
+
+    .shape {
+        position: relative;
+        top: 52%;
+        background-color: #414756;
+        width: 36%;
+        height: 2%;
+        left: 31%;
+        border-radius: 10%;
+        opacity: 0.9;
+    }
+
+
+    .annotation-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 200px;
+        height: 200px;
+        background-color: #414756;
+        border: 1px solid #414756;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        padding: 14px;
+    }
+
+    .annotation-container label {
+        font-family: 'Poppins', sans-serif;
+        color: #efeae4;
+        right: 70.9px;
+        top: 4%;
+    }
+
+    .annotation-container textarea {
+        position: fixed;
+        background-color: #414756;
+        font-size: 18px;
+        color: #efeae4;
+        top: 411px;
+        width: 14.5%;
+        height: 27%;
+        resize: none;
+    }
+
+    .ciclos {
+        font-family: 'Playpen Sans', cursive;
+        position: absolute;
+        align-items: center;
+        top: 26%;
+        left: 36%;
+        font-size: 26px;
+
+    }
+    .ciclos p{
+       opacity: 0.9; 
     
-    <label class="text-note" for="textarea">Bloco de Notas</label><br><br><br>
-    <textarea 
-    placeholder="Como preparar um bolo de fubá?
-    - Um fusca rebaixado 
-    - Uranio
-    - Metano defumado
-  precauções: ALTO TEOR DE MONOXIDO DE CARBONO."></textarea>
-</div>
+    }
 
 
-  
-  </div>
-    
-  <!-- /tentativa de notes -->
- 
+
+    .timer {
+        font-family: 'Roboto Mono', monospace;
+        position: absolute;
+        align-items: center;
+        top: 30px;
+        left: 31.6%;
+        font-size: 150px;
+    }
+
+    .parar {
+        position: absolute;
+        left: 65%;
+        top: 47%;
+        font-size: 30px;
+    }
+
+    .parar img {
+        position: absolute;
+        width: 22px;
+        cursor: pointer;
+    }
+
+    .parar img:hover {
+        position: absolute;
+        width: 23px;
+        cursor: pointer;
+    }
+
+    .iniciar {
+        position: absolute;
+        left: 64.4%;
+        top: 39%;
+
+    }
+
+    .iniciar img {
+        position: absolute;
+        width: 38px;
+        cursor: pointer;
+    }
+
+    .iniciar img:hover {
+        position: absolute;
+        width: 39px;
+        cursor: pointer;
+    }
+
+    .login {
+        position: absolute;
+        left: 91%;
+        top: 40px;
+
+    }
+    .bebeEscrotoDançando{
+        position: absolute;
+        height: 35%;
+        left: 80%;
+        top: 28%;
+    }
+</style>
+
+<body>
 
 
-  <div class="ciclos">
-    <p> Ciclos: <span id="ciclos">0 </span></p>
+    <div class="shape">
+
     </div>
+    <div class="conteiner">
+        <div class="annotation-container">
+
+            <label class="text-note" for="textarea">NOTAS ✍️</label><br><br><br>
+            <textarea id="textarea" placeholder="Coisas para fazer durante a pausa:           
+                    - Assaltar um banco     - Invadir os EUA    - Chutar um idoso   "></textarea>
+        </div>
+    </div>
+    <img class="esqueletoDançante" src="https://i.pinimg.com/originals/d5/a6/01/d5a601488ff0c53f1554f3f0b02aef21.gif">
+
+    <img class="bebeEscrotoDançando" src="https://i.pinimg.com/originals/24/67/49/246749aa1d9d2f9189c4b2007ee65da2.gif">
+
+    <div class="bloco">
+    </div>
+
     <p id="teste"></p>
     <div class="timer">
-    <p id="tempo-trabalho">25:00</p>
-    <p id="tempo-pausa" style="display:none">05:00</p>
-  </div>
+        <div class="ciclos">
+            <p> ⏱️<b>Ciclos: <span id="ciclos">0 </span></p></b>
+        </div>
+        <p id="tempo-trabalho">25:00</p>
+        <p id="tempo-pausa" style="display:none">15:00</p>
+    </div>
 
     <div class="botoes">
-      <div class="iniciar">
-    <button onclick="iniciarPomodoro()">Iniciar</button>
-  </div>
-  <div class="parar">
-    <button onclick="pararPomodoro()">Parar</button>
-  </div>
-  </div>
+        <div class="iniciar">
+            <img id="iniciar/pause" onclick="iniciarPomodoro()"
+                src="https://icons.veryicon.com/png/o/internet--web/web-video-clip/play-332.png">
+        </div>
 
-</div>
+        <div class="parar">
+            <img src="https://imagepng.org/quadrado-preto/quadrado-preto/" onclick="pararPomodoro()">
+        </div>
+    </div>
+    </div>
 
 
     <script>
-      let tempoTrabalho = 25 * 60;
-      let tempoPausa = 5 * 60;
-      let intervalo;
-      let ciclos = 0;
-      let trabalhando = true;
+        
+        
+        var tempoTrabalho = 25 * 60;
+        var tempoPausa = 15 * 60;
+        var intervalo;
+        let ciclos = 0;
+        let trabalhando;
 
-      function iniciarPomodoro() {
-        intervalo = setInterval(() => {
-          if (trabalhando) {
-            tempoTrabalho--;
+        function iniciarPomodoro(trabalhando) {
+            trabalhando = true;
+            tempoTrabalho = 25 * 60;
+            tempoPausa = 15 * 60;
+
+            intervalo = setInterval(() => {
+                if (trabalhando) { //se tiver no Work
+                    tempoTrabalho--;
+                    document.getElementById("tempo-trabalho").innerHTML = `${formatarTempo(tempoTrabalho)}`;
+
+                    document.getElementById("iniciar/pause").src = "https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-pause-512.png";
+                    document.getElementById("iniciar/pause").onclick = pausarTempo;
+
+
+                    if (tempoTrabalho === 0) {
+                        trabalhando = false;
+                        tempoPausa;
+                        ciclos++;
+                        document.getElementById("ciclos").innerHTML = ciclos;
+                    }
+                }
+                else { //se tiver em Pausa
+                    tempoPausa--;
+                    document.getElementById("tempo-pausa").innerHTML = `${formatarTempo(tempoPausa)}`;
+
+                    if (tempoPausa === 0) {
+                        trabalhando = true;
+                        tempoTrabalho = 25 * 60;
+                    }
+                }
+            }, 1000);
+        }
+
+        function pararPomodoro() {
+
+            clearInterval(intervalo);
+
+            document.getElementById("iniciar/pause").src = "https://icons.veryicon.com/png/o/internet--web/web-video-clip/play-332.png";
+            document.getElementById("iniciar/pause").onclick = iniciarPomodoro;
+
+            document.getElementById("tempo-trabalho").innerHTML = "25:00";
+            document.getElementById("tempo-pausa").innerHTML = "25:00";
+            document.getElementById("ciclos").innerHTML = ciclos;
+        }
+
+        function pausarTempo() {
+            window.clearTimeout(intervalo);
+            trabalhando = false;
+            tempoTrabalho;
+            ciclos;
+
+            document.getElementById("ciclos").innerHTML = ciclos;
             document.getElementById("tempo-trabalho").innerHTML = `${formatarTempo(tempoTrabalho)}`;
-            if (tempoTrabalho === 0) {
-              trabalhando = false;
-              tempoPausa = 5 * 60;
-              document.getElementById("tempo-pausa").style.display = "block";
-              document.getElementById("tempo-trabalho").style.display = "none";
-              ciclos++;
-              document.getElementById("ciclos").innerHTML = ciclos;
+
+            document.getElementById("iniciar/pause").src = "https://icons.veryicon.com/png/o/internet--web/web-video-clip/play-332.png";
+            document.getElementById("iniciar/pause").onclick = iniciarPomodoro;
+
+
+        }
+
+
+        function formatarTempo(segundos) {
+            let minutos = Math.floor(segundos / 60);
+            let segundosRestantes = segundos % 60;
+
+            if (segundosRestantes < 10) {
+                segundosRestantes = `0${segundosRestantes}`;
             }
-          } else {
-            tempoPausa--;
-            document.getElementById("tempo-pausa").innerHTML = `${formatarTempo(tempoPausa)}`;
-            if (tempoPausa === 0) {
-              trabalhando = true;
-              tempoTrabalho = 25 * 60;
-              document.getElementById("tempo-trabalho").style.display = "block";
-              document.getElementById("tempo-pausa").style.display = "none";
+            // Adicione esta parte para os minutos
+            if (minutos < 10) {
+                minutos = `0${minutos}`;
             }
-          }
-        }, 1000);
-      }
+            return `${minutos}:${segundosRestantes}`;
+        }
 
-      function pararPomodoro() {
-        clearInterval(intervalo);
-        tempoTrabalho = 25 * 60;
-        tempoPausa = 5 * 60;
-        ciclos = 0;
-        trabalhando = true;
-        document.getElementById("tempo-trabalho").innerHTML = `25:00`;
-        document.getElementById("tempo-pausa").innerHTML = `05:00`;
-        document.getElementById("ciclos").innerHTML = ciclos;
-        document.getElementById("tempo-trabalho").style.display = "block";
-        document.getElementById("tempo-pausa").style.display = "none";
-      }
 
-      function formatarTempo(segundos) {
-  let minutos = Math.floor(segundos / 60);
-  let segundosRestantes = segundos % 60;
-  if (segundosRestantes < 10) {
-    segundosRestantes = `0${segundosRestantes}`;
-  }
-  // Adicione esta parte para os minutos
-  if (minutos < 10) {
-    minutos = `0${minutos}`;
-  }
-  return `${minutos}:${segundosRestantes}`;
-}
+        //notas ->
 
-//notas
-let textclose="close";
-let textopen="open";
-document.getElementById("hidebtn").innerHTML=textclose;
-const hideshow=document.getElementById("hidebtn");
-hideshow.addEventListener("click", ()=>{
-console.log("funcionou");
-var textarea=document.querySelector('.conteiner');
-var isVisible = textarea.style.display != "none";
-if(isVisible){
-  document.getElementById("hidebtn").innerHTML=textopen;
-}
-  // altera a propriedade display para none ou block
-  textarea.style.display = isVisible ? "none" : "block";
-  if(!isVisible){
-  document.getElementById("hidebtn").innerHTML=textclose;
-}
+        function save() {
 
-});
-
-function saveAnnotations() {
             const annotations = document.querySelector('.annotation-container textarea').value;
             localStorage.setItem('annotations', annotations);
+
         }
-        
+
         // Carregar as anotações do localStorage
-        function loadAnnotations() {
+        function load() {
             const annotations = localStorage.getItem('annotations');
             if (annotations) {
                 document.querySelector('.annotation-container textarea').value = annotations;
             }
         }
-        
+
         // Chamar a função de carregar as anotações ao carregar a página
         window.addEventListener('load', loadAnnotations);
-        
+
         // Chamar a função de salvar as anotações ao sair da página
         window.addEventListener('beforeunload', saveAnnotations);
+
     </script>
-  </body>
+
+
+
+</body>
+
 </html>
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sometype+Mono&family=Space+Mono:ital,wght@0,700;1,400&display=swap');
-
-.hidebtn{
-  position: absolute;
-  right:2.5%;
-  top:59.5%;
-  z-index:4;
-  border: none;
-  background-color: #e4dcdc;
-
-}
-.text-note{
-  position:absolute;
-  align-items: center;
-}
-.annotation-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 200px;
-            height: 200px;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            padding: 14px;
-        }
-        
-        .annotation-container textarea {
-          position:fixed;
-          top: 411px;
-          width: 14.5%;
-            height: 27%;
-            resize: none;
-        }
-
-.ciclos{
-  font-family: 'Playpen Sans', cursive;
-
-  position: absolute;
-  align-items: center;
-  top:302px;
-  left:43.9%;
-  font-size: 26px;
-
-}
-
-
-.timer{
-  font-family: 'Sometype Mono', monospace;
-
-  position: absolute;
-  align-items: center;
-  top:30px;
-  left:32%;
-  font-size:150px
-}
-
- .parar {
-  
-  position: absolute;
-  left:65%;
-  top: 44%;
-  font-size: 30px;
-
-}
-
- .iniciar {
-  position: absolute;
-  left:64.9%;
-  top:40%;
-  font-size: 30px;
-
-}
-
-.login{
-  position: absolute;
-  left:91%;
-  top:40px;
-
-}
-
-
-
-</style>
